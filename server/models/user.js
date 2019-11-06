@@ -24,7 +24,13 @@ var userSchema = new mongoose.Schema({
   },
   profileImageUrl: {
     type: String
-  }
+  },
+  messages: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Message"
+    }
+  ]
 });
 
 /*right before save data to DB, modify password by hashing with bcrypt*/
