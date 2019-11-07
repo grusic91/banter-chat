@@ -1,10 +1,5 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background-color: #edd8ed;
 }
 
@@ -19,7 +14,7 @@ body {
 }
 
 .navbar a:hover {
-  color: #edd8ed;
+  color: #e5e5e3;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -29,7 +24,26 @@ ul.nav.navbar-nav li {
 }
 
 .onboarding > .navbar {
-
-  background: linear-gradient(to left, #6e4b6e, #9198e5);
+  background: linear-gradient(to left, #a16955, #413332);
   background-size: 100%;
+}
+
+.home-hero {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+  background-image: url("./images/signed-out-home.jpg");
+  text-align: center;
+  padding: 1rem;
+  background-position: center center;
+  background-size: cover;
+  color: #e5e5e3;
+  text-shadow: 0 0 8px #c1b2aa;
 }
