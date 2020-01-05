@@ -1,6 +1,8 @@
-require('dotenv').config(); //load all environment variables
-const express = require("express");
+require('dotenv').config(); //load environment variables on process.env
+const config = require('./config/dev.js');
+const express = require('express');
 const app = express();
+<<<<<<< HEAD
 const mongoose = require('mongoose');
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -15,20 +17,20 @@ const messagesRoutes = require("./routes/messages.js")
 
 const User = require('./models/user');
 const Message = require('./models/message');
+=======
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const errorHandler = require('./handlers/error');
+const authRoutes = require('./routes/auth');
+const db = require('./models')
+>>>>>>> feature/login-backend
 
 const PORT = process.env.PORT || 8002;
 
-/* Connect to DB with mongoose */
-mongoose.set("debug", true);
-mongoose.Promise = Promise;
-mongoose.connect(config.DB_URI,
-  { useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  });
+app.use(cors()); //Enable All CORS Requests
+app.use(bodyParser.json()); // parse application/json
 
-
-
+<<<<<<< HEAD
 //Enable All CORS Requests
 app.use(cors());
 // parse application/json
@@ -58,6 +60,10 @@ app.get("/api/messages", loginRequred, async function(req, res, next) {
     next(err);
   }
 })
+=======
+/* all routes will come here, if they can not be reached, call 404 error handler */
+app.use("/api/auth", authRoutes)
+>>>>>>> feature/login-backend
 
 // handling 404 error, when route does not exist
 app.use(function(req, res, next) {
@@ -69,6 +75,5 @@ app.use(function(req, res, next) {
 /* take any incomming middelware from upper next()
 whitin error and will print out nicer display of error */
 app.use(errorHandler);
-
 
 app.listen(PORT, () => console.log(`App is listening on prot ${PORT}!`))
