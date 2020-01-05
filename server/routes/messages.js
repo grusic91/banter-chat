@@ -1,7 +1,7 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router({ mergeParams: true}); // allows to access the ID inside of this router
 
-const { createMessage, getMessage, deleteMessage } = require("../handlers/messages.js");
+const { createMessage, getMessage, deleteMessage } = require('../handlers/messages.js');
 
 // prefix - /api/users/:id/messages
 router.route("/").post(createMessage);

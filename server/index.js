@@ -2,11 +2,13 @@ require('dotenv').config(); //load environment variables on process.env
 const config = require('./config/dev');
 const express = require('express');
 const app = express();
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const errorHandler = require("./handlers/error.js");
-const authRoutes = require("./routes/auth.js")
-const db = require("./models");
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const errorHandler = require('./handlers/error');
+const authRoutes = require('./routes/auth');
+const messagesRoutes = require('./routes/messages');
+const { loginRequred, ensureCorrectUser } = require('./middleware/auth');
+const db = require('./models');
 
 const PORT = process.env.PORT || 8002;
 
@@ -15,6 +17,23 @@ app.use(bodyParser.json()); // parse application/json
 
 /* all my routes will come here later, if they can not be reached, call 404 error handler */
 app.use("/api/auth", authRoutes);
+app.use("/api/users/:id/messages", loginRequred, ensureCorrectUser, messagesRoutes);
+
+/*get all messages*/
+app.get("/api/messages", loginRequred, async function(req, res, next) {
+  try {
+    //find and sort messages, and populate them with ownsers username, and profile img
+    let messages = await db.Message.find()
+      .sort({ createdAt: "desc" })
+      .populate("user", {
+        username: true,
+        profileImageUrl: true
+      });
+    return res.status(200).json(messages);
+  } catch (err) {
+    return next(err);
+  }
+});
 
 
 // handling 404 error, when route does not exist

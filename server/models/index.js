@@ -14,3 +14,4 @@ mongoose.connect(config.DB_URI,
   });
 
 module.exports.User = require('./user');
+module.exports.Message = require('./message');
