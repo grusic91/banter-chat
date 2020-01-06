@@ -1,6 +1,6 @@
 /*responsible to connecting with mongoose*/
 const mongoose = require('mongoose');
-const config = require('../config/dev');
+const config = require('../config');
 mongoose.Promise = Promise; // for async functions thet returns promises
 
 /* Connect to DB with mongoose */

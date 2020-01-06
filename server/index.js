@@ -35,6 +35,15 @@ app.get("/api/messages", loginRequred, async function(req, res, next) {
   }
 });
 
+if (process.env.NODE_ENV === 'production') {
+  const appPath = path.join(__dirname, '..', 'build')
+  app.use(express.static(appPath));
+
+  app.get("/*", (req, res) => {
+    res.sendFile(path.resolve(appPath, 'index.html'));
+  });
+}
+
 
 // handling 404 error, when route does not exist
 app.use(function(req, res, next) {
