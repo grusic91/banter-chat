@@ -1,4 +1,4 @@
-const config = require("../config/dev");
+const config = require("../config");
 const jwt = require("jsonwebtoken");
 
 /* AUTHENTICATION - user is logged */

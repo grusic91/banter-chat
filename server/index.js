@@ -1,4 +1,4 @@
-require('dotenv').config(); //load environment variables on process.env
+//require('dotenv').config(); //load environment variables on process.env
 const config = require('./config');
 const express = require('express');
 const app = express();
