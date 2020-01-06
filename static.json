@@ -5,7 +5,7 @@
   },
   "proxies": {
     "/api": {
-      "origin": "https://banter-react-app.herokuapp.com/"
+      "origin": "https://banter-react-app.herokuapp.com/api"
     }
   }
 }

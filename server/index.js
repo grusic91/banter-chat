@@ -1,8 +1,9 @@
 require('dotenv').config(); //load environment variables on process.env
-const config = require('./config/dev');
+const config = require('./config');
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const path = require('path');
 const bodyParser = require('body-parser');
 const errorHandler = require('./handlers/error');
 const authRoutes = require('./routes/auth');
@@ -35,11 +36,12 @@ app.get("/api/messages", loginRequred, async function(req, res, next) {
   }
 });
 
+// for heroku
 if (process.env.NODE_ENV === 'production') {
   const appPath = path.join(__dirname, '..', 'build')
   app.use(express.static(appPath));
 
-  app.get("/*", (req, res) => {
+  app.get("*", (req, res) => {
     res.sendFile(path.resolve(appPath, 'index.html'));
   });
 }
