@@ -6,10 +6,8 @@ export default class AuthForm extends Component {
     this.state = {
       email: "",
       username: "",
-      password: "",
       profileImageUrl: ""
     };
-
   }
 
   handleChange = e => {
@@ -20,27 +18,21 @@ export default class AuthForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const authType = this.props.signUp ? "register" : "login";
+    const authType = this.props.signUp ? "signup" : "signin";
     this.props
       .onAuth(authType, this.state)
       .then(() => {
-        this.props.history.push("/");
+        this.props.history.push("/");  //render homepage component
       })
       .catch(() => {
         return;
       })
   }
   render() {
-    const {email, username, password, profileImageUrl} = this.state;
-    const {
-      heading,
-      buttonText,
-      signUp,
-      errors,
-      history,
-      removeError
-    } = this.props;
+    const {email, username, profileImageUrl} = this.state;
+    const { heading, buttonText, signUp, errors, history, removeError } = this.props;
 
+    /* listen for any change in a route and call removeError */
     history.listen(() => {
       removeError();
     });

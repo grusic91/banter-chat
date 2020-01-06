@@ -1,4 +1,4 @@
-/* Display errors to the user */
+/* Reducer that display errors to the user */
 import { ADD_ERROR, REMOVE_ERROR } from '../actionTypes';
 
 export default (state = {message: null}, action) => {

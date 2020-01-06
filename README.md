@@ -2,6 +2,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 /handlrers fucntions
 
+## frontend folder Structure
+
+-**components/** folder for react-components
+-**containers/** folder for react-components connected with redux store
+-**hocs/** high order components
+-**images** images
+-**services** logic that comunicate with api
+
 ## Available Scripts
 
 In the project directory, you can run:

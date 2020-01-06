@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
+// landing page
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { MessageTimeline } from './MessageTimeline';
 
 const Homepage = ({ currentUser }) => {
-
   if(!currentUser.isAuthenticated) {
-
     return(
       <div className="home-hero">
         <h1>What's going on?</h1>
@@ -17,11 +17,11 @@ const Homepage = ({ currentUser }) => {
   }
   return (
     <div>
-      <h1> You Made It! </h1>
+      <MessageTimeline
+        profileImageUrl={currentUser.user.profileImageUrl}
+        username={currentUser.user.username}/>
     </div>
   )
 }
-
-
 
 export default Homepage;
