@@ -1,10 +1,10 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import {postNewMessage} from "../store/actions/messages";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {postNewMessage} from '../store/actions/messages';
 
 class  MessageForm extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       message: ""
     }
@@ -13,7 +13,7 @@ class  MessageForm extends Component {
   handleNewMessage = event => {
     event.preventDefault();
     this.props.postNewMessage(this.state.message);
-    this.setState({ message: ""});
+    this.setState({ message: ""}); // after post message set message to empty string
     this.props.history.push("/");
   }
 
@@ -21,7 +21,7 @@ class  MessageForm extends Component {
     return (
       <form onSubmit={this.handleNewMessage}>
         {this.props.errors.message && (
-          <div className="alert alert-danger">{this.props.errors.message}</div>
+          <div className="alert alert-danger">{this.props.errors}</div>
         )}
         <input
           type="text"
@@ -32,7 +32,7 @@ class  MessageForm extends Component {
         <button
           className="btn btn-success pull-right"
           type="submit">
-            Add my message!
+            Add message!
           </button>
       </form>
     )

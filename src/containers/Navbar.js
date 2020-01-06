@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import {logout} from "../store/actions/auth";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import {logout} from '../store/actions/auth';
 
 class Navbar extends Component {
 
@@ -12,7 +12,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand">
+      <nav className="nav navbar navbar-expand">
         <div className="container-fluid">
           <div className="navbar-header">
             <Link to="/" className="navbar-brand">
@@ -21,21 +21,21 @@ class Navbar extends Component {
             </Link>
           </div>
           { this.props.currentUser.isAuthenticated ? (
-            <ul className="nav-navbar-nav navbar-right">
-              <li>
+            <ul className="row nav-navbar-nav navbar-right">
+              <li className="nav-item">
                 <Link to={`/users/${this.props.currentUser.user.id}/messages/new`}>New Message</Link>
               </li>
-              <li>
-                <a onClick={this.logout}>Log out</a>
+              <li className="nav-item">
+                <Link to="/" onClick={this.logout}>Log out</Link>
               </li>
             </ul>
           ) : (
             <ul className="nav navbar-nav navbar-right">
-              <li>
-                <Link to="/register">Sign up</Link>
+              <li className="nav-item">
+                <Link to="/signup">Sign up</Link>
               </li>
-              <li>
-                <Link to="/login">Log in</Link>
+              <li className="nav-item">
+                <Link to="/signin">Log in</Link>
               </li>
             </ul>
           )

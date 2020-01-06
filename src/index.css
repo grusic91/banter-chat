@@ -3,29 +3,41 @@ body {
   background-color: #edd8ed;
 }
 
+
 /* Navbar */
 .navbar {
   margin-bottom: 1rem;
 }
-
-.navbar a {
-  font-weight: bold;
-  color: white;
+.nav-item > a {
+  color: #fcfcfc;
+  font-weight: 500;
+  margin-right: 15px;
 }
 
-.navbar a:hover {
-  color: #e5e5e3;
-  text-decoration: underline;
-  cursor: pointer;
+
+ul {
+  list-style-type: none;
 }
+
 
 ul.nav.navbar-nav li {
   margin: 0 0.5rem;
+  ;
 }
 
 .onboarding > .navbar {
   background: linear-gradient(to left, #a16955, #413332);
-  background-size: 100%;
+  background-size: 100% 100%;
+}
+
+.navbar-brand {
+  color: #fcfcfc;
+  display: inline-block;
+  margin-bottom: 2px;
+  margin-right: 10px;
+}
+.navbar-brand:hover {
+  color: #c1b2aa;
 }
 
 .home-hero {
@@ -46,4 +58,29 @@ ul.nav.navbar-nav li {
   background-size: cover;
   color: #e5e5e3;
   text-shadow: 0 0 8px #c1b2aa;
+}
+
+/*style messages*/
+#messages .list-group-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 7px 20px 12px;
+}
+
+#messages:not(.no-hover) .list-group-item:hover {
+  background-color: #e5e5e3;
+}
+
+.timeline-image {
+  border-radius: 50px;
+  margin: 2px 30px 10px 10px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+a.btn.btn-danger,
+a.btn.btn-danger:hover {
+  color: #e5e5e3;
 }

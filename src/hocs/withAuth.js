@@ -3,17 +3,21 @@ import { connect } from "react-redux";
 
 export default function withAuth(ComponentToBeRenderd) {
   class Authenticate extends Component {
-    UNSAFE_componentWillMoutn() {
-      if(!this.props.isAuthenticated === false) {
-        this.props.history.push("/login"); //signin
+    componentDidMount() {
+      /**
+        * when the component mounts we make sure if isAuthenticated is false
+      **/
+      if(this.props.isAuthenticated === false) {
+        this.props.history.push("/signin"); //redirect signin
       }
     }
-    UNSAFE_componentWillUpdate(nextProps) {
+    shouldComponentUpdate(nextProps) {
+      /* if component is changed check if user is still logged in
+      otherwise redirect to signin page*/
       if(nextProps.isAuthenticated === false) {
-        this.props.history.push("/login")
+        this.props.history.push("/signin")
       }
     }
-
     render() {
       return <ComponentToBeRenderd {...this.props} />
     }
@@ -22,6 +26,5 @@ export default function withAuth(ComponentToBeRenderd) {
   function mapStateToProps(state) {
     return { isAuthenticated: state.currentUser.isAuthenticated }
   }
-
   return connect(mapStateToProps)(Authenticate);
 }
